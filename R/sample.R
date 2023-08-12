@@ -5,8 +5,10 @@
 ## So here we are explicit about sampling _from_ a vector.
 ## Likewise, the int version is named just for consistency with sample_from.
 
+#' @export
 sample_int <- sample.int
 
+#' @export
 sample_from <- function(x, size = length(x), replace = FALSE, prob = NULL) {
     x[sample_int(length(x), size, replace, prob)]
 }
