@@ -11,6 +11,7 @@
 #' @return For \code{chunk}, a list with \code{x} chunked across the list entries.
 #'         For \code{chunk_int}, a list with the values \code{1:n} chunked across the list entries.
 #' @details Exactly one of \code{n_chunks} and \code{max_chunk_size} should be \code{NULL} (to specify both as non-\code{NULL} is an error).
+#' @export
 chunk <- function(x, chunk_count = NULL, chunk_max_length = NULL, method = c("seq", "mod", "rand")) {
   both_null <- (is.null(chunk_count) && is.null(chunk_max_length))
   both_non_null <- (!is.null(chunk_count)) && (!is.null(chunk_max_length))
@@ -41,6 +42,7 @@ chunk <- function(x, chunk_count = NULL, chunk_max_length = NULL, method = c("se
 
 
 #' @rdname chunk
+#' @export
 chunk_int <- function(n, chunk_count = NULL, chunk_max_length = NULL, method = c("seq", "mod", "rand")) {
     chunk(seq_len(n), chunk_count, chunk_max_length, method)
 }
