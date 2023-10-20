@@ -25,6 +25,44 @@ chunk <- function(x, chunk_count = NULL, chunk_max_length = NULL, method = c("se
     chunk_count <- ceiling(length(x) / chunk_max_length)
   }
 
+  chunk_iix <- ((seq_along(x) - 1) %% chunk_count) + 1
+
+  ## chunk_iix is currently chunked by mod.  
+  ## do we need to alter the method to either seq or rand?
+  chunk_iix <-
+    switch(
+      method,
+      "seq" = sort(chunk_iix),
+      "mod" = chunk_iix,
+      "rand" = sample_from(chunk_iix)
+    )
+
+  lapply(seq_len(chunk_count), \(chunk_ix) {
+    x[chunk_iix == chunk_ix]
+  })
+}
+
+
+#' @rdname chunk
+#' @export
+chunk_int <- function(n, chunk_count = NULL, chunk_max_length = NULL, method = c("seq", "mod", "rand")) {
+    chunk(seq_len(n), chunk_count, chunk_max_length, method)
+}
+
+
+..chunk.deprecated.. <- function(x, chunk_count = NULL, chunk_max_length = NULL, method = c("seq", "mod", "rand")) {
+  both_null <- (is.null(chunk_count) && is.null(chunk_max_length))
+  both_non_null <- (!is.null(chunk_count)) && (!is.null(chunk_max_length))
+  if (both_null || both_non_null) {
+    stop("exactly one of `chunk_count` or `chunk_max_length` must be non-NULL")
+  }
+
+  method <- match.arg(method)
+
+  if (is.null(chunk_count)) {
+    chunk_count <- ceiling(length(x) / chunk_max_length)
+  }
+
   split_iix <- (seq_along(x) - 1) %% chunk_count
 
   ## split_iix is currently chunked by mod.  
@@ -38,11 +76,4 @@ chunk <- function(x, chunk_count = NULL, chunk_max_length = NULL, method = c("se
     )
 
   base::split(x, split_iix)
-}
-
-
-#' @rdname chunk
-#' @export
-chunk_int <- function(n, chunk_count = NULL, chunk_max_length = NULL, method = c("seq", "mod", "rand")) {
-    chunk(seq_len(n), chunk_count, chunk_max_length, method)
 }
