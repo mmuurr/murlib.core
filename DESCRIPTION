@@ -1,6 +1,6 @@
 Package: murlib.core
 Title: Core Utilities
-Version: 0.0.0.9009
+Version: 0.0.0.9010
 Authors@R: 
     person("Murat", "Tasan",
            email = "mmuurr@gmail.com",
@@ -10,10 +10,10 @@ Description: A collection of core utilities that I use frequently that are missi
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    base (>= 4.2.2),
-    stats (>= 4.2.2)
+    base (>= 4.3.2),
+    stats (>= 4.3.2)
