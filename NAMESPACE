@@ -2,6 +2,7 @@
 
 export("%!in%")
 export("%===%")
+export("%notin%")
 export(append_class)
 export(chunk)
 export(chunk_int)
