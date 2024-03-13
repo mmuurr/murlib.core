@@ -1,4 +1,8 @@
 test_that("dict", {
+  expect_identical(
+    names(dict()),
+    character(0)
+  )
   dict() |> expect_no_error()
   dict(list()) |> expect_error()
   dict(foo = list()) |> expect_no_error()

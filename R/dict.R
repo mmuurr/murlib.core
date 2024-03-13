@@ -32,6 +32,7 @@ dict <- (function() {
   }
 
   function(...) {
+    if (...length() == 0) return(structure(list(), names = character(0)))
     x <- list(...)
     if (!isTRUE(is_dict(x))) stop("not dictionaryish")
     x
