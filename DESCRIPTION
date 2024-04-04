@@ -1,6 +1,6 @@
 Package: murlib.core
 Title: Core Utilities
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: 
     person("Murat", "Tasan",
            email = "mmuurr@gmail.com",
@@ -15,5 +15,5 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    base (>= 4.3.2),
-    stats (>= 4.3.2)
+    base (>= 4.3.3),
+    stats (>= 4.3.3)
