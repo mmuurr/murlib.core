@@ -23,4 +23,3 @@ inf2 <- function(x, replacement) {
   x[is.infinite(x)] <- replacement
   x
 }
-
