@@ -5,9 +5,14 @@
 ## So here we are explicit about sampling _from_ a vector.
 ## Likewise, the int version is named just for consistency with sample_from.
 
+#' @title Sample without the _n_=1 gotcha
+#' @name safe_sample
+
+#' @rdname safe_sample
 #' @export
 sample_int <- sample.int
 
+#' @rdname safe_sample
 #' @export
 sample_from <- function(x, size = length(x), replace = FALSE, prob = NULL) {
     x[sample_int(length(x), size, replace, prob)]

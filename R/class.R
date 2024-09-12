@@ -22,19 +22,24 @@ inherits_all <- function(x, klass = character(0)) {
 class_attr <- function(x) attr(x, "class", TRUE)
 
 
-#' @param null replace `NULL` with this val. If `NULL`, then `NULL` is returned (without a class).
+#' @title Add (S3) classes to an object
+#' @name add_class
+#' @details The new class vector will be uniquified, in left-to-right preferential order (so `x,y,x,z` becomes `x,y,z`).
+#' @param x The object whose class is to be updated.
+#' @param cls The class(es) to add.
+#' @param null If `x` is `NULL`, first replace it with this value, since `NULL` can't have a class.
+#' @return The object with new class structure.
+
+#' @rdname add_class
 #' @export
-prepend_class <- function(x, cls = character(0), null = NULL) {
-  if (is.null(x)) x <- null  ## x is NULL? replace with `null`.
-  if (is.null(x)) return(NULL)  ## x is still NULL? return it.
+prepend_class <- function(x, cls = character(0), null = list()) {
+  x <- null_to(x, null)
   structure(x, class = unique(c(cls, class_attr(x))))
 }
 
-
-#' @param null replace `NULL` with this val. If `NULL`, then `NULL` is returned (without a class).
+#' @rdname add_class
 #' @export
-append_class <- function(x, cls = character(0), null = NULL) {
-  if (is.null(x)) x <- null  ## x is NULL? replace with `null`.
-  if (is.null(x)) return(NULL)  ## x is still NULL? return it.
+append_class <- function(x, cls = character(0), null = list()) {
+  x <- null_to(x, null)
   structure(x, class = unique(c(class_attr(x), cls)))
 }

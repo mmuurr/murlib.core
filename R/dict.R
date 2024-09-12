@@ -40,9 +40,14 @@ foo <- (function() {
   list(dict = dict, is_dict = is_dict)
 })()
 
+#' @name dictionary
+#' @title Dictionary-list
+
+#' @rdname dictionary
 #' @export
 dict <- foo$dict
 
+#' @rdname dictionary
 #' @export
 is_dict <- foo$is_dict
 

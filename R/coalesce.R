@@ -6,20 +6,38 @@
 ## (There's a warning about this behavior in the ifelse reference page.)
 ##==============================================================================
 
+#' @title Replace specials (NA, NaN, (+/-)Inf)
+#' @name replace_na
+
+#' @rdname replace_na
 #' @export
 na2 <- function(x, replacement) {
   x[is.na(x)] <- replacement
   x
 }
 
+#' @rdname replace_na
 #' @export
 nan2 <- function(x, replacement) {
   x[is.nan(x)] <- replacement
   x
 }
 
+#' @rdname replace_na
 #' @export
 inf2 <- function(x, replacement) {
   x[is.infinite(x)] <- replacement
   x
 }
+
+#' @rdname replace_na
+#' @export
+na_to <- na2
+
+#' @rdname replace_na
+#' @export
+nan_to <- nan2
+
+#' @rdname replace_na
+#' @export
+inf_to <- inf2

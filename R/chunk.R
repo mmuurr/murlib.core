@@ -1,5 +1,4 @@
 #' @title Chunk a vector into a list of vectors of roughly equal length.
-#'
 #' @param x The vector or list to be chunked.
 #' @param n The number of integers to chunk (i.e. chunk the sequence \code{1:n}).
 #' @param count The number of chunks desired.
