@@ -17,7 +17,7 @@ inherits_all <- function(x, klass = character(0)) {
 ## Because consider x <- 1
 ## class(x) == "integer", but attr(x, "class") is NULL.
 ## We should preserve the NULLness, I think.
-## The class(x) is fallback behavior when the "class" attribute is NULL.
+## The class(x) is this case is executing R's fallback behavior when the "class" attribute is NULL.
 ## By assigning a class explicitly, we are bypassing this fallback.
 class_attr <- function(x) attr(x, "class", TRUE)
 
