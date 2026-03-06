@@ -30,6 +30,13 @@ foo <- (function() {
 		TRUE
   }
 
+	as_dict <- function(x) {
+		if (length(x) == 0) return(dict())
+		x <- as.list(x)
+		if (!is_dict(x)) stop("cannot coerce to dict")
+		x
+	}
+
   dict <- function(...) {
     if (...length() == 0) return(structure(list(), names = character(0)))
     x <- list(...)
@@ -37,7 +44,7 @@ foo <- (function() {
     x
   }
 
-  list(dict = dict, is_dict = is_dict)
+  list(dict = dict, is_dict = is_dict, as_dict = as_dict)
 })()
 
 #' @name dictionary
@@ -50,5 +57,10 @@ dict <- foo$dict
 #' @rdname dictionary
 #' @export
 is_dict <- foo$is_dict
+
+#' @rdname dictionary
+#' @export
+as_dict <- foo$as_dict
+
 
 rm(foo)

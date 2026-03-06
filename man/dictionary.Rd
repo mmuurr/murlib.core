@@ -4,11 +4,14 @@
 \alias{dictionary}
 \alias{dict}
 \alias{is_dict}
+\alias{as_dict}
 \title{Dictionary-list}
 \usage{
 dict(...)
 
 is_dict(x)
+
+as_dict(x)
 }
 \description{
 Dictionary-list
