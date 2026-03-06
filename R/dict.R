@@ -24,10 +24,10 @@ foo <- (function() {
 
   ## rlang::is_dictionaryish
   is_dict <- function(x) {
-    if (!length(x)) {
-        return(!is.null(x))
-    }
-    is_named(x) && !any(duplicated(names(x)))
+		if (!is.list(x)) return(FALSE)
+		if (!is_named(x)) return(FALSE)
+		if (any(duplicated(names(x)))) return(FALSE)
+		TRUE
   }
 
   dict <- function(...) {

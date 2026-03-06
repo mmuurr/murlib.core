@@ -13,3 +13,12 @@ test_that("dict", {
   dict(1:3) |> expect_error()
   dict(foo = 1:3) |> expect_no_error()
 })
+
+test_that("is_dict", {
+	is_dict(NULL) |> expect_false()
+	is_dict(list()) |> expect_false()
+	is_dict(character(0)) |> expect_false()
+	is_dict(c("foo" = "bar", "baz" = "qux")) |> expect_false()
+	is_dict(c("foo" = "bar", "baz" = "qux") |> as.list()) |> expect_true()
+	is_dict() |> expect_error()
+})
